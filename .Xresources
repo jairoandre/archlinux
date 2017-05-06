@@ -1,0 +1,6 @@
+XTerm*reverseVideo: on
+#XTerm*faceName: Noto Sans
+XTerm*faceName: Hermit
+XTerm*faceSize: 15
+XTerm*locale:true
+XTerm*utf8: 1
