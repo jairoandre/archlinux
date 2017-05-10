@@ -1,44 +1,29 @@
 call plug#begin('~/.vim/plugged')
+Plug 'jelera/vim-javascript-syntax'
+Plug 'scrooloose/nerdtree'
 Plug 'elmcast/elm-vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ayu-theme/ayu-vim'
+Plug 'crater2150/vim-theme-chroma'
 call plug#end()
 
-set termguicolors     " enable true colors support
-"let ayucolor="light"  " for light version of theme
-let ayucolor="mirage" " for mirage version of theme
-"let ayucolor="dark"   " for dark version of theme
-"colorscheme ayu
 
+set number
+set termguicolors
+"let ayucolor="mirage"
+"colorscheme chroma
+
+map <C-n> :NERDTreeToggle<CR>
 
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-
-map <C-n> :NERDTreeToggle<CR> 
-
-
-"Elm stuff
-let g:elm_format_autosave = 1
-
-"Relative numbers
-set relativenumber
-
-function! NumberToggle()
-  if(&number == 0)
-    set number
-  else
-    set nonumber
-  endif
-endfunc
-
-nnoremap <C-m> :call NumberToggle()<CR>
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
-
-nnoremap ; :
-
 set path+=**
 set wildmenu
-set clipboard=unamed
+set wildignore+=**/target/**,**/node_modules/**
+set showcmd
+nnoremap ; :
+set listchars=tab:>~,nbsp:_,trail:.
+set list
+
+highlight ColoColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%121v', 100)
